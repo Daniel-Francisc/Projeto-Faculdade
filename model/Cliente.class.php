@@ -116,6 +116,30 @@ class Cliente extends ConexaoCliente{
     #endregion
 
     #region Métodos
+        public function inserirCliente($nome, $sobrenome, $email, $senha, $dt_nascimento, $id_nivel){
+            $this->setNome($nome);
+            $this->setSobrenome($sobrenome);
+            $this->setEmail($email);
+            $this->setSenha($senha);
+            $this->setDtInscricao($dt_nascimento);
+            $this->setIdNivel($id_nivel);
+
+            $sql = "INSERT INTO tb_cliente VALUES (null,:nome',':sobrenome',':email',:senha,:dtn,current_date(),null,null,:nivel)";
         
+            try {
+                $bd = $this->conectarCliente();
+                $query = $bd->prepare($sql);
+                $query->bindValue(':nome',      $this->getNome(), PDO::PARAM_STR);
+                $query->bindValue(':sobrenome', $this->getSobrenome(), PDO::PARAM_STR);
+                $query->bindValue(':email',     $this->getEmail(), PDO::PARAM_STR);
+                $query->bindValue(':senha',     $this->getSenha(), PDO::PARAM_STR);
+                $query->bindValue(':dtn',       $this->getDtNascimento(), PDO::PARAM_STR);
+                $query->bindValue(':nivel',     $this->getIdNivel(), PDO::PARAM_STR);
+                $query->execute();
+                return true;
+            } catch (PDOException $e) {
+                return false;
+            }
+        }
     #endregion
 }
