@@ -1,9 +1,9 @@
 <?php
+include_once 'ConexaoCliente.class.php';
 class Cliente extends ConexaoCliente{
     #region Atributos
         private $id_cliente;
         private $nome;
-        private $sobrenome;
         private $email;
         private $senha;
         private $dt_nascimento;
@@ -32,16 +32,6 @@ class Cliente extends ConexaoCliente{
         public function setNome($nome) 
         {
                 $this->nome = $nome;
-        }
-
-        public function getSobrenome()
-        {
-                return $this->sobrenome;
-        }
-
-        public function setSobrenome($sobrenome) 
-        {
-                $this->sobrenome = $sobrenome;
         }
 
         public function getEmail()
@@ -117,55 +107,115 @@ class Cliente extends ConexaoCliente{
 
     #region Métodos
         #region Inserir    
-            public function inserirCliente($nome, $sobrenome, $email, $senha, $dt_nascimento, $id_nivel){
+            public function inserirCliente($nome, $email, $senha, $dt_nascimento, $id_nivel){
                 $this->setNome($nome);
-                $this->setSobrenome($sobrenome);
                 $this->setEmail($email);
                 $this->setSenha($senha);
-                $this->setDtInscricao($dt_nascimento);
+                $this->setDtNascimento($dt_nascimento);
                 $this->setIdNivel($id_nivel);
 
-                $sql = "INSERT INTO tb_cliente VALUES (null,:nome',':sobrenome',':email',:senha,:dtn,current_date(),null,null,:nivel)";
-            
+                $sql = "INSERT INTO tb_cliente VALUES (null,':nome',':email',md5(':senha'),':dtn',current_date(),null,null,':nivel')";
+                
                 try {
-                    $bd = $this->conectarCliente();
-                    $query = $bd->prepare($sql);
-                    $query->bindValue(':nome',      $this->getNome(), PDO::PARAM_STR);
-                    $query->bindValue(':sobrenome', $this->getSobrenome(), PDO::PARAM_STR);
-                    $query->bindValue(':email',     $this->getEmail(), PDO::PARAM_STR);
-                    $query->bindValue(':senha',     $this->getSenha(), PDO::PARAM_STR);
-                    $query->bindValue(':dtn',       $this->getDtNascimento(), PDO::PARAM_STR);
-                    $query->bindValue(':nivel',     $this->getIdNivel(), PDO::PARAM_STR);
+                    $db  = $this->conectarCliente();
+                    $query = $db->prepare($sql);
+                    $query->bindValue(':nome',  $this->getNome(), PDO::PARAM_STR);
+                    $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+                    $query->bindValue(':senha', $this->getSenha(), PDO::PARAM_STR);
+                    $query->bindValue(':dtn',   $this->getDtNascimento(), PDO::PARAM_STR);
+                    $query->bindValue(':nivel', $this->getIdNivel(), PDO::PARAM_INT);
                     $query->execute();
+                    print "Feito";
+                        
                     return true;
                 } catch (PDOException $e) {
-                    return false;
+                        print $e;
+                        return false;
                 }
             }
         #endregion
 
         #region Consultar    
-            public function consutarCliente($id_cliente,$nome){
-                $this->setIdCliente($id_cliente);
-                $this->setNome($nome);
-            
-                $sql = "INSERT INTO tb_cliente VALUES (null,:nome',':sobrenome',':email',:senha,:dtn,current_date(),null,null,:nivel)";
-            
-                try {
-                    $bd = $this->conectarCliente();
-                    $query = $bd->prepare($sql);
-                    $query->bindValue(':nome',      $this->getNome(), PDO::PARAM_STR);
-                    $query->bindValue(':sobrenome', $this->getSobrenome(), PDO::PARAM_STR);
-                    $query->bindValue(':email',     $this->getEmail(), PDO::PARAM_STR);
-                    $query->bindValue(':senha',     $this->getSenha(), PDO::PARAM_STR);
-                    $query->bindValue(':dtn',       $this->getDtNascimento(), PDO::PARAM_STR);
-                    $query->bindValue(':nivel',     $this->getIdNivel(), PDO::PARAM_STR);
-                    $query->execute();
-                    return true;
-                } catch (PDOException $e) {
-                    return false;
+                public function consutarCliente($nome){
+                        $this->setNome($nome);
+                        $sql = "SELECT * FROM tb_cliente where true ";
+
+                        if ($this->getNome() != null) {
+                            $sql .= " and nome like :nome";
+                        }
+
+                        $sql .= " order by nome";
+
+                        try {
+                            $bd = $this->conectarCliente();
+                            $query = $bd->prepare($sql);
+
+                            if ($this->getNome() != null) {
+                                $this->setNome("%" . $nome . "%");
+                                $query->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
+                            }
+
+                            $query->execute();
+                            $resultado = $query->fetchAll(PDO::FETCH_OBJ);
+                            
+                            return $resultado;
+
+                        } catch (PDOException $e) {
+                                print $e;
+                                return false;
+                        }
                 }
-            }
+        #endregion
+
+        #region Alterar
+                public function alterarCliente($id_cliente,$nome){
+                        $this->setIdCliente($id_cliente);
+                        $this->setNome($nome);
+
+                        $sql = "UPDATE tb_cliente SET nome = :nome WHERE id_cliente = :id_cliente";
+
+                        try {
+                                $bd = $this->conectarCliente();
+                                $query = $bd->prepare($sql);
+                                $query->bindValue(':id_cliente', $this->getIdcliente(), PDO::PARAM_INT);
+                                $query->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
+                                $query->execute();
+                                print "Feito";
+
+                                return true;
+
+                        } catch (PDOException $e) {
+                                print $e;
+                                return false;
+                        }
+                }
+        #endregion
+
+        #region Deletar
+                public function excluirCliente($id_cliente){
+                    $this->setIdCliente($id_cliente);
+                
+                    $sql = "DELETE FROM tb_cliente WHERE id_cliente = :id_cliente";
+                
+                    try {
+                        $bd = $this->conectarCliente();
+                        $query = $bd->prepare($sql);
+                        $query->bindValue(':id_cliente', $this->getIdCliente(), PDO::PARAM_INT);
+                        $query->execute();
+                        print "Feito";
+
+                        return true;
+                
+                    } catch (PDOException $e) {
+                        print $e;
+                        return false;
+                    }
+                }
         #endregion
     #endregion
 }
+
+
+$obj = new Cliente;
+//$obj->inserirCliente('Guess 2','guess@email.com','1234856','2003-05-20',1);
+$obj->alterarCliente(5,'Guess area 3');
