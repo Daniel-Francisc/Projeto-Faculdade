@@ -9,7 +9,6 @@ descricao_nivel varchar(50) not null
 create table if not exists tb_cliente(
 id_cliente int not null auto_increment primary key,
 nome varchar(100) not null,
-sobrenome varchar(100) not null,
 email varchar(100) not null,
 senha varchar(32) not null,
 dt_nascimento date not null,

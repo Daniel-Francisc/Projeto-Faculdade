@@ -107,23 +107,21 @@ class Cliente extends ConexaoCliente{
 
     #region Métodos
         #region Inserir    
-            public function inserirCliente($nome, $email, $senha, $dt_nascimento, $id_nivel){
+            public function inserirCliente($nome, $email, $senha, $dt_nascimento){
                 $this->setNome($nome);
                 $this->setEmail($email);
                 $this->setSenha($senha);
                 $this->setDtNascimento($dt_nascimento);
-                $this->setIdNivel($id_nivel);
 
-                $sql = "INSERT INTO tb_cliente VALUES (null,':nome',':email',md5(':senha'),':dtn',current_date(),null,null,':nivel')";
+                $sql = "INSERT INTO tb_cliente VALUES (null,:nome,:email,:senha,:dtn,current_date(),0,0,1)";
                 
                 try {
                     $db  = $this->conectarCliente();
                     $query = $db->prepare($sql);
                     $query->bindValue(':nome',  $this->getNome(), PDO::PARAM_STR);
                     $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
-                    $query->bindValue(':senha', $this->getSenha(), PDO::PARAM_STR);
-                    $query->bindValue(':dtn',   $this->getDtNascimento(), PDO::PARAM_STR);
-                    $query->bindValue(':nivel', $this->getIdNivel(), PDO::PARAM_INT);
+                    $query->bindValue(':senha', md5($this->getSenha()), PDO::PARAM_STR);
+                    $query->bindValue(':dtn', $this->getDtNascimento(), PDO::PARAM_STR);
                     $query->execute();
                     print "Feito";
                         
@@ -214,8 +212,3 @@ class Cliente extends ConexaoCliente{
         #endregion
     #endregion
 }
-
-
-$obj = new Cliente;
-//$obj->inserirCliente('Guess 2','guess@email.com','1234856','2003-05-20',1);
-$obj->alterarCliente(5,'Guess area 3');
