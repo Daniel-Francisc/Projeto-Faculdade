@@ -106,6 +106,28 @@ class Cliente extends ConexaoCliente{
     #endregion
 
     #region Métodos
+        #region seção usuario
+        public function sessãoCliente($nome){
+                $this->setNome($nome);
+
+                $sql = 'SELECT nome FROM tb_cliente WHERE nome = :nome';
+
+                try {
+                        $db = $this->conectarCliente();
+                        $query = $db->prepare($sql);
+                        $query->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
+                        $query->execute();
+                        $resultado = $query->fetchAll(PDO::FETCH_OBJ);
+                        foreach ($resultado as $key => $valor) {
+                            $perfil = $valor->perfil;
+                        }
+                        return $perfil;
+                } catch(PDOException){
+                        return false;
+                }
+        }    
+        #endregion
+        
         #region Inserir    
             public function inserirCliente($nome, $email, $senha, $dt_nascimento){
                 $this->setNome($nome);
@@ -123,7 +145,7 @@ class Cliente extends ConexaoCliente{
                     $query->bindValue(':senha', md5($this->getSenha()), PDO::PARAM_STR);
                     $query->bindValue(':dtn', $this->getDtNascimento(), PDO::PARAM_STR);
                     $query->execute();
-                    print "Feito";
+                    //print "Feito";
                         
                     return true;
                 } catch (PDOException $e) {

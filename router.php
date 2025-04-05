@@ -14,6 +14,15 @@
     #endregion
 
 #region Cliente
+    #region Entrar Cliente
+        if (isset($_POST['Entrar'])) {
+            $obj = new Controller();
+            $email = htmlspecialchars($_POST['email']);
+            $senha = htmlspecialchars($_POST['senha']);
+            $obj->validar($email, $senha);
+        }
+    #endregion
+
     #region Inserir Cliente
         if (isset($_POST['inserir_cliente'])){
             $obj = new Controller();
@@ -37,14 +46,14 @@
     #endregion
     
     #region Deletar Cliente
-    if (isset($_POST['deletar_cliente'])){
-        $obj = new Controller();
-        $nome = htmlspecialchars($_POST['nomeCliente']);
-        $email = htmlspecialchars($_POST['emailCliente']);
-        $senha = htmlspecialchars($_POST['senhaCliente']);
-        $dt_nascimento = htmlspecialchars($_POST['dtnCliente']);
-        $obj->inserir_cliente($nome, $email, $senha, $dt_nascimento);
-    }
+        if (isset($_POST['deletar_cliente'])){
+            $obj = new Controller();
+            $nome = htmlspecialchars($_POST['nomeCliente']);
+            $email = htmlspecialchars($_POST['emailCliente']);
+            $senha = htmlspecialchars($_POST['senhaCliente']);
+            $dt_nascimento = htmlspecialchars($_POST['dtnCliente']);
+            $obj->inserir_cliente($nome, $email, $senha, $dt_nascimento);
+        }
     #endregion
 
     #region Consultar Cliente
