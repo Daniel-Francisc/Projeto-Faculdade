@@ -65,7 +65,7 @@
         print '        <p><a href="cadastrarCliente.php" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Não possui login?</a></p>';
         print '        <p><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Esqueceu a senha?</a></p>';
         print '        <div class="d-grid gap-2 col-6 mx-auto">';
-        print '            <button type="submit" name="Entrar" class="btn text-bg-dark">Acessar</button>';
+        print '            <button type="submit" name="Entrar" class="btn text-bg-dark"><i class="bi bi-box-arrow-right"></i> Acessar</button>';
         print '        </div><br>';
         print '    </div>';
         print '</form>';
