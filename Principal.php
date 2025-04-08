@@ -59,9 +59,9 @@
         print '<form action="index.php" method="post">';
         print '    <div class="container text-center">';
         print '        <label class="form-label">Email</label>';
-        print '        <input type="email" class="form-control">';    
+        print '        <input type="email" class="form-control" name="Email" required>';    
         print '        <label class="form-label">Senha</label>';
-        print '        <input type="password" class="form-control"><br>';
+        print '        <input type="password" class="form-control" name="Senha" required><br>';
         print '        <p><a href="cadastrarCliente.php" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Não possui login?</a></p>';
         print '        <p><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Esqueceu a senha?</a></p>';
         print '        <div class="d-grid gap-2 col-6 mx-auto">';

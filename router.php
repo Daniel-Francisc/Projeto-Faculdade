@@ -17,9 +17,9 @@
     #region Entrar Cliente
         if (isset($_POST['Entrar'])) {
             $obj = new Controller();
-            $email = htmlspecialchars($_POST['email']);
-            $senha = htmlspecialchars($_POST['senha']);
-            $obj->validar($email, $senha);
+            $email = htmlspecialchars($_POST['Email']);
+            $senha = htmlspecialchars($_POST['Senha']);
+            $obj->validar_cliente($email, $senha);
         }
     #endregion
 

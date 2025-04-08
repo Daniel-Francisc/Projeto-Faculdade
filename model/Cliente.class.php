@@ -106,26 +106,56 @@ class Cliente extends ConexaoCliente{
     #endregion
 
     #region Métodos
-        #region seção usuario
-        public function sessãoCliente($nome){
-                $this->setNome($nome);
+        #region Login 
+                public function validarCliente($email,$senha){
+                        $this->setEmail($email);
+                        $this->setSenha($senha);
 
-                $sql = 'SELECT nome FROM tb_cliente WHERE nome = :nome';
+                        $sql = 'SELECT COUNT(*) AS q FROM tb_cliente WHERE email = :email and senha = :senha';
 
-                try {
-                        $db = $this->conectarCliente();
-                        $query = $db->prepare($sql);
-                        $query->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
-                        $query->execute();
-                        $resultado = $query->fetchAll(PDO::FETCH_OBJ);
-                        foreach ($resultado as $key => $valor) {
-                            $perfil = $valor->perfil;
+                        try{
+                                $db = $this->conectarCliente();
+                                $query=$db->prepare($sql);
+                                $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+                                $query->bindValue(':senha', md5($this->getSenha()), PDO::PARAM_STR);
+                                $query->execute();
+                                $resultado = $query->fetchAll(PDO::FETCH_OBJ);
+
+                                foreach ($resultado as $key => $valor) {
+                                    $quantidade = $valor->q;
+                                }
+                                if ($quantidade == 1) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }                    
+
+                        }catch(PDOException $e){
+                                return false;
                         }
-                        return $perfil;
-                } catch(PDOException){
-                        return false;
                 }
-        }    
+        #
+
+        #region Sessão
+                public function sessãoCliente($nome){
+                        $this->setNome($nome);
+
+                        $sql = 'SELECT nome FROM tb_cliente WHERE nome = :nome';
+
+                        try {
+                                $db = $this->conectarCliente();
+                                $query = $db->prepare($sql);
+                                $query->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
+                                $query->execute();
+                                $resultado = $query->fetchAll(PDO::FETCH_OBJ);
+                                foreach ($resultado as $key => $valor) {
+                                    $perfil = $valor->perfil;
+                                }
+                                return $perfil;
+                        } catch(PDOException){
+                                return false;
+                        }
+                }    
         #endregion
         
         #region Inserir    
