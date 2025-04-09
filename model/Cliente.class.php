@@ -137,19 +137,19 @@ class Cliente extends ConexaoCliente{
         #
 
         #region Sessão
-                public function sessãoCliente($nome){
-                        $this->setNome($nome);
+                public function sessaoCliente($email){
+                        $this->setEmail($email);
 
-                        $sql = 'SELECT nome FROM tb_cliente WHERE nome = :nome';
+                        $sql = 'SELECT nome FROM tb_cliente WHERE email = :email';
 
                         try {
                                 $db = $this->conectarCliente();
                                 $query = $db->prepare($sql);
-                                $query->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
+                                $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
                                 $query->execute();
                                 $resultado = $query->fetchAll(PDO::FETCH_OBJ);
                                 foreach ($resultado as $key => $valor) {
-                                    $perfil = $valor->perfil;
+                                    $perfil = $valor->nome;
                                 }
                                 return $perfil;
                         } catch(PDOException){

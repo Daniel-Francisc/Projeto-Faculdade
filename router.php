@@ -27,6 +27,7 @@
         if (isset($_POST['inserir_cliente'])){
             $obj = new Controller();
             $nome = htmlspecialchars($_POST['nomeCliente']);
+            $nome = ucwords($nome);
             $email = htmlspecialchars($_POST['emailCliente']);
             $senha = htmlspecialchars($_POST['senhaCliente']);
             $dt_nascimento = htmlspecialchars($_POST['dtnCliente']);

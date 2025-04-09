@@ -56,7 +56,7 @@
         print '      </div>';
         print '      <div class="modal-body">';
         print '      </div>';
-        print '<form action="index.php" method="post">';
+        print '<form  method="post" action="index.php">';
         print '    <div class="container text-center">';
         print '        <label class="form-label">Email</label>';
         print '        <input type="email" class="form-control" name="Email" required>';    

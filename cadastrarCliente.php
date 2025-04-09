@@ -24,7 +24,6 @@
                 </div>
         </div>
 
-                
         <form class="container" method="post" action="index.php">
             <br>
             </div class="mb-3 col">
