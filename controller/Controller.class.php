@@ -58,8 +58,12 @@
                         print'      <div class="collapse navbar-collapse" id="navbarSupportedContent">';
                         print'        <ul class="navbar-nav me-auto mb-2 mb-lg-0">';
                         print'          <li class="nav-item">';
-                        print'            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-cart-fill"></i> Meu carrinho</a>';
+                        print'            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-cart-fill"></i> Produtos</a>';
                         print'          </li>';
+                        print'          <li class="nav-item">';
+                        print'            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-cart-fill"></i> Usuario</a>';
+                        print'          </li>';
+                        print'        </ul>';
                         print'      </div>';
                         print'    </div>';
                         print'</nav>';
