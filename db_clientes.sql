@@ -6,6 +6,8 @@ id_nivel int not null auto_increment primary key,
 descricao_nivel varchar(50) not null
 );
 
+insert into tb_nivel values (null,Bronze),(null,Prata),(null,Ouro);
+
 create table if not exists tb_cliente(
 id_cliente int not null auto_increment primary key,
 nome varchar(100) not null,

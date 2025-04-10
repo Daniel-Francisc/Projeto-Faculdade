@@ -19,7 +19,7 @@
             $obj = new Controller();
             $email = htmlspecialchars($_POST['Email']);
             $senha = htmlspecialchars($_POST['Senha']);
-            $obj->validar_cliente($email, $senha);
+            $obj->validar($email, $senha);
         }
     #endregion
 

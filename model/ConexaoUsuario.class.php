@@ -13,7 +13,7 @@ class ConexaoUsuario{
         try{
             $pdo = new PDO("mysql:host={$this->host};dbname={$this->db}", "{$this->user}", "{$this->psw}");
             $this->link=$pdo;
-            print 'Conectado!';
+            //print 'Conectado!';
             return $this->link;
         }
         catch(PDOException $e){

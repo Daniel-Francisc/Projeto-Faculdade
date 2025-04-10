@@ -5,13 +5,21 @@
             require_once 'views/' . $pagina . '.php';
         }
     #region Cliente
-        #úteis    
-            public function validar_cliente($email, $senha){
-                $obj = new Cliente();
-                if($obj->validarCliente($email, $senha) == true){
+        #úteis
+            public function validar($email, $senha){
+                $objCliente = new Cliente();
+                $objUsuario = new Usuario();
+                if($objCliente->validarCliente($email, $senha) == true){
                     session_start();
                     $_SESSION['email'] = $email;
-                    $_SESSION['perfil'] = $obj->sessaoCliente($email);
+                    $_SESSION['perfil'] = $objCliente->sessaoCliente($email);
+                    $menu = $this->menu();
+                    //print 'Não erro...';die();
+                    include_once 'view/frontCliente.php';
+                }elseif($objUsuario->validarUsuario($email, $senha) == true){
+                    session_start();
+                    $_SESSION['email'] = $email;
+                    $_SESSION['perfil'] = $objUsuario->sessaoUsuario($email);
                     $menu = $this->menu();
                     //print 'Não erro...';die();
                     include_once 'view/frontCliente.php';
@@ -39,32 +47,56 @@
     #endregion
         #region Modal & Semelhantes
             public function menu(){
-                print'<div class="bg-warning">';
-                print'    <nav class="navbar">';
-                print'        <div class="container-fluid navbar-brand">';
-                print'            <div class="nav justify-content-center">';
-                print'                <a class="navbar-brand" href="Principal.php">Olá '.$_SESSION['perfil'].'!</a>';
-                print'            </div>';
-                print'            <div class="d-grid gap-2 d-md-flex justify-content-md-end">';
-                print'              <div class="dropdown-menu">';
-                print'                  <button class="btn btn-dark  dropdown-toggle" type="button" name="entrarUsuario" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-box-arrow-right"></i> Perfil</button>';
-                print'                  <ul class="dropdown-menu">';
-                print'                      <li><a class="dropdown-item" href="#">Action</a></li>';
-                print'                      <li><a class="dropdown-item" href="#">Another action</a></li>';
-                print'                      <li><a class="dropdown-item" href="#">Something else here</a></li>';
-                print'                  </ul>';
-                print'              </div>';
-                print'            </div>';
-                print'        </div>';
-                print'    </nav>';
-                print'        <div class="row">';
-                print'            <button class="text-bg-dark p-2 col-3">Dark with contrasting color</button>';
-                print'            <button class="text-bg-warning p-2 col-3">Warning with contrasting color</button>';
-                print'            <button class="text-bg-dark p-2 col-3">Dark with contrasting color</button>';
-                print'            <button class="text-bg-warning p-2 col-3">Warning with contrasting color</button>';
-                print'        </div>';
-                print'</div>';
+                switch($_SESSION['perfil']){
+                    case 'Administrador':
+                        print'<nav class="navbar navbar-expand-lg bg-warning">';
+                        print'    <div class="container-fluid">';
+                        print'      <a class="navbar-brand" href="#">Olá '.$_SESSION['perfil'].'</a>';
+                        print'      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
+                        print'        <span class="navbar-toggler-icon"></span>';
+                        print'      </button>';
+                        print'      <div class="collapse navbar-collapse" id="navbarSupportedContent">';
+                        print'        <ul class="navbar-nav me-auto mb-2 mb-lg-0">';
+                        print'          <li class="nav-item">';
+                        print'            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-cart-fill"></i> Meu carrinho</a>';
+                        print'          </li>';
+                        print'      </div>';
+                        print'    </div>';
+                        print'</nav>';
+                        break;
+                    case 'Gerente':
+                        print'<nav class="navbar navbar-expand-lg bg-warning">';
+                        print'    <div class="container-fluid">';
+                        print'      <a class="navbar-brand" href="#">Olá '.$_SESSION['perfil'].'</a>';
+                        print'      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
+                        print'        <span class="navbar-toggler-icon"></span>';
+                        print'      </button>';
+                        print'      <div class="collapse navbar-collapse" id="navbarSupportedContent">';
+                        print'        <ul class="navbar-nav me-auto mb-2 mb-lg-0">';
+                        print'          <li class="nav-item">';
+                        print'            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-cart-fill"></i> Meu carrinho</a>';
+                        print'          </li>';
+                        print'      </div>';
+                        print'    </div>';
+                        print'</nav>';
+                        break;
+                    default:
+                        print'<nav class="navbar navbar-expand-lg bg-warning">';
+                        print'    <div class="container-fluid">';
+                        print'      <a class="navbar-brand" href="#">Olá '.$_SESSION['perfil'].'</a>';
+                        print'      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
+                        print'        <span class="navbar-toggler-icon"></span>';
+                        print'      </button>';
+                        print'      <div class="collapse navbar-collapse" id="navbarSupportedContent">';
+                        print'        <ul class="navbar-nav me-auto mb-2 mb-lg-0">';
+                        print'          <li class="nav-item">';
+                        print'            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-cart-fill"></i> Meu carrinho</a>';
+                        print'          </li>';
+                        print'      </div>';
+                        print'    </div>';
+                        print'</nav>';
+                        break;
+                }
             }
         #endregion
     }
-
