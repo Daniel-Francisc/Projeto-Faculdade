@@ -68,3 +68,21 @@
         }
     #endregion
 #endregion
+
+#region Produtos
+    #region Inserir produto
+        if (isset($_POST['inserir_cliente'])){
+            $obj = new controller;
+            $produto = htmlspecialchars($_POST['produto']);
+            $descricao = htmlspecialchars($_POST['descricao']);
+            $entrada = htmlspecialchars($_POST['entrada']);
+            $id_distribuidora = htmlspecialchars($_POST['id_distribuidora']);
+            $id_fornecedor = htmlspecialchars($_POST['id_fornecedor']);
+            $v_uni = htmlspecialchars($_POST['v_uni']);
+            $v_total = htmlspecialchars($_POST['v_total']);
+            $n_lote = htmlspecialchars($_POST['n_lote']);
+            $dt_validade = htmlspecialchars($_POST['dt_validade']);
+            $obj->inserir_produto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade);
+        }
+    #endregion
+#endregion

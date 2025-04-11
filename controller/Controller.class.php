@@ -4,11 +4,12 @@
             session_start();
             require_once 'views/' . $pagina . '.php';
         }
-    #region Cliente
+        
         #úteis
             public function validar($email, $senha){
                 $objCliente = new Cliente();
                 $objUsuario = new Usuario();
+
                 if($objCliente->validarCliente($email, $senha) == true){
                     session_start();
                     $_SESSION['email'] = $email;
@@ -16,6 +17,7 @@
                     $menu = $this->menu();
                     //print 'Não erro...';die();
                     include_once 'view/frontCliente.php';
+
                 }elseif($objUsuario->validarUsuario($email, $senha) == true){
                     session_start();
                     $_SESSION['email'] = $email;
@@ -23,28 +25,45 @@
                     $menu = $this->menu();
                     //print 'Não erro...';die();
                     include_once 'view/frontCliente.php';
+
                 }else{
                     //print "error...";die();
                     include_once 'Principal.php';
                 }
             }
-
         #endregion
 
-        #region Cliente SCUD
-            public function inserir_cliente($nome, $email, $senha, $dt_nascimento){
-                $obj = new Cliente();
-                if ($obj->inserirCliente($nome, $email, $senha, $dt_nascimento) == true) {
+        #region Cliente
+            #region Cliente SCUD
+                public function inserir_cliente($nome, $email, $senha, $dt_nascimento){
+                    $obj = new Cliente();
+                    if ($obj->inserirCliente($nome, $email, $senha, $dt_nascimento) == true) {
+                        session_start();
+                        $menu = $this->menu();
+                        include_once 'Principal.php';
+                    } else {
+                        session_start();
+                        include_once 'Principal.php';
+                        }
+                }
+            #endregion
+        #endregion
+            
+        #region Produtos
+            #region Produtos SCUD
+            public function inserir_produto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade){
+                $obj = new Estoque();
+                if ($obj->inserirProduto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade)==true){
                     session_start();
                     $menu = $this->menu();
-                    include_once 'Principal.php';
-                } else {
+                    include_once 'produtos.php';
+                } else{
                     session_start();
-                    include_once 'Principal.php';
-                    }
+                    include_once 'produtos.php';
+                }
             }
+            #endregion
         #endregion
-    #endregion
         #region Modal & Semelhantes
             public function menu(){
                 switch($_SESSION['perfil']){
@@ -59,6 +78,12 @@
                         print'        <ul class="navbar-nav me-auto mb-2 mb-lg-0">';
                         print'          <li class="nav-item">';
                         print'            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-cart-fill"></i> Produtos</a>';
+                        print'          </li>';
+                        print'          <li class="nav-item">';
+                        print'            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-cart-fill"></i> Fornecedor</a>';
+                        print'          </li>';
+                        print'          <li class="nav-item">';
+                        print'            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-cart-fill"></i> Distribuidora</a>';
                         print'          </li>';
                         print'          <li class="nav-item">';
                         print'            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-cart-fill"></i> Usuario</a>';
