@@ -82,7 +82,7 @@
             $v_total = htmlspecialchars($_POST['v_total']);
             $n_lote = htmlspecialchars($_POST['n_lote']);
             $dt_validade = htmlspecialchars($_POST['dt_validade']);
-            $obj->inserir_produto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade);
+            $obj->inserir_produto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade,$cor);
         }
     #endregion
 #endregion
