@@ -3,52 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title></title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <div>
+<?php print $menu?>
+<br>
+    <div class="container">
         <form action="index.php" method="post">
-            <div class="mb-3">
-                <label for="exampleInputName1" class="form-label">Password</label>
-                <input type="text" class="form-control" id="exampleInputName1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputName1" class="form-label">Password</label>
-                <input type="text" class="form-control" id="exampleInputName1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputName1" class="form-label">Password</label>
-                <input type="text" class="form-control" id="exampleInputName1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputName1" class="form-label">Password</label>
-                <input type="text" class="form-control" id="exampleInputName1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputName1" class="form-label">Password</label>
-                <input type="text" class="form-control" id="exampleInputName1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputName1" class="form-label">Password</label>
-                <input type="number" class="form-control" id="exampleInputName1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputName1" class="form-label">Password</label>
-                <input type="number" class="form-control" id="exampleInputName1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputName1" class="form-label">Password</label>
-                <input type="number" class="form-control" id="exampleInputName1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputName1" class="form-label">Password</label>
-                <input type="date" class="form-control" id="exampleInputName1">
+            <div class="mb-3 row">
+                <h3>Consultar Produtos</h3><br>
+                <input type="text" class=" col-8" id="exampleInputName1" placeholder="Busque por nome...">
+                <button class="btn btn-info col-sm-2"><i class="bi bi-search"></i> Consultar</button>
+                <button class="btn btn-success col-sm-2" type="button" name="novoDistribuidora" data-bs-toggle="modal" data-bs-target="#novoDistribuidora"><i class="bi bi-plus-lg"></i> Novo</button>
             </div>
         </form>
     </div>
-    <table class="table">
+    <table class="table container">
       <thead>
         <tr>
           <th scope="col">N° lote</th>
@@ -74,3 +46,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php $this->inserir_distribuidora_modal()?>

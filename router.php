@@ -42,7 +42,6 @@
             $email = htmlspecialchars($_POST['emailCliente']);
             $senha = htmlspecialchars($_POST['senhaCliente']);
             $dt_nascimento = htmlspecialchars($_POST['dtnCliente']);
-            $obj->inserir_cliente($nome, $email, $senha, $dt_nascimento);
         }
     #endregion
     
@@ -53,7 +52,6 @@
             $email = htmlspecialchars($_POST['emailCliente']);
             $senha = htmlspecialchars($_POST['senhaCliente']);
             $dt_nascimento = htmlspecialchars($_POST['dtnCliente']);
-            $obj->inserir_cliente($nome, $email, $senha, $dt_nascimento);
         }
     #endregion
 
@@ -64,14 +62,13 @@
             $email = htmlspecialchars($_POST['emailCliente']);
             $senha = htmlspecialchars($_POST['senhaCliente']);
             $dt_nascimento = htmlspecialchars($_POST['dtnCliente']);
-            $obj->inserir_cliente($nome, $email, $senha, $dt_nascimento);
         }
     #endregion
 #endregion
 
 #region Produtos
     #region Inserir produto
-        if (isset($_POST['inserir_cliente'])){
+        if (isset($_POST['inserir_produto'])){
             $obj = new controller;
             $produto = htmlspecialchars($_POST['produto']);
             $descricao = htmlspecialchars($_POST['descricao']);
@@ -84,5 +81,69 @@
             $dt_validade = htmlspecialchars($_POST['dt_validade']);
             $obj->inserir_produto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade,$cor);
         }
+    #endregion
+    #region inserir distribuidora
+    if (isset($_POST['inserir_distribuidora'])){
+        $obj = new controller;
+        $distribuidora = htmlspecialchars($_POST['distribuidora']);
+        $cnpj = htmlspecialchars($_POST['cnpj']);
+        $email = htmlspecialchars($_POST['email']);
+        $contato = htmlspecialchars($_POST['contato']);
+        $obj->inserir_distribuidora($distribuidora, $cnpj, $email, $contato);
+    }
+    #endregion
+    #region consultar distribuidora
+    if (isset($_POST['consultar_distribuidora'])){
+        $obj = new controller;
+        $distribuidora = htmlspecialchars($_POST['distribuidora']);
+        $obj->consultar_distribuidora($distribuidora);
+    }
+    #endregion
+    #region alterar distribuidora
+    if (isset($_POST['excluir_distribuidora'])){
+        $obj = new controller;
+        $id = htmlspecialchars($_POST['id']);
+        $obj->deletar_distribuidora($id);
+    }
+    #endregion
+    #region deletar distribuidora
+    if (isset($_POST['alterar_distribuidora'])){
+        $obj = new controller;
+        $id = htmlspecialchars($_POST['id_distribuidora']);
+        $distribuidora = htmlspecialchars($_POST['nome_distribuidora']);
+        $obj->alterar_distribuidora($id,$distribuidora);
+    }
+    #endregion
+    #region inserir distribuidora
+    if (isset($_POST['inserir_fornecedor'])){
+        $obj = new controller;
+        $fornecedor = htmlspecialchars($_POST['fornecedor']);
+        $cnpj = htmlspecialchars($_POST['cnpj']);
+        $email = htmlspecialchars($_POST['email']);
+        $contato = htmlspecialchars($_POST['contato']);
+        $obj->inserir_fornecedor($fornecedor, $cnpj, $email, $contato);
+    }
+    #endregion
+    #region consultar fornecedor
+    if (isset($_POST['consultar_fornecedor'])){
+        $obj = new controller;
+        $fornecedor = htmlspecialchars($_POST['fornecedor']);
+        $obj->consultar_fornecedor($fornecedor);
+    }
+    #endregion
+    #region alterar fornecedor
+    if (isset($_POST['excluir_fornecedor'])){
+        $obj = new controller;
+        $id = htmlspecialchars($_POST['id']);
+        $obj->deletar_fornecedor($id);
+    }
+    #endregion
+    #region deletar fornecedor
+    if (isset($_POST['alterar_fornecedor'])){
+        $obj = new controller;
+        $id = htmlspecialchars($_POST['id_fornecedor']);
+        $fornecedor = htmlspecialchars($_POST['nome_fornecedor']);
+        $obj->alterar_fornecedor($id,$fornecedor);
+    }
     #endregion
 #endregion
