@@ -99,65 +99,65 @@
                 }
             #endregion
             #region Produtos SCUD
-            public function inserir_produto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade,$cor){
-                $obj = new Estoque();
-                if ($obj->inserirProduto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade,$cor)==true){
-                    session_start();
-                    $menu = $this->menu();
-                    include_once 'produtos.php';
-                } else{
-                    session_start();
-                    include_once 'produtos.php';
+                public function inserir_produto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade,$cor){
+                    $obj = new Estoque();
+                    if ($obj->inserirProduto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade,$cor)==true){
+                        session_start();
+                        $menu = $this->menu();
+                        include_once 'produtos.php';
+                    } else{
+                        session_start();
+                        include_once 'produtos.php';
+                    }
                 }
-            }
             #endregion
             #region Fornecedor SCUD
-            public function inserir_fornecedor($fornecedor, $cnpj, $email, $contato){
-                $obj = new Fornecedor();
-                if($obj->inserirfornecedor($fornecedor, $cnpj, $email, $contato)){
-                    session_start();
-                    $menu = $this->menu();
-                    include_once 'view/fornecedor.php';
-                }else{
-                    session_start();
-                    include_once 'view/fornecedor.php';
+                public function inserir_fornecedor($fornecedor, $cnpj, $email, $contato){
+                    $obj = new Fornecedor();
+                    if($obj->inserirfornecedor($fornecedor, $cnpj, $email, $contato)){
+                        session_start();
+                        $menu = $this->menu();
+                        include_once 'view/fornecedor.php';
+                    }else{
+                        session_start();
+                        include_once 'view/fornecedor.php';
+                    }
                 }
-            }
-            public function consultar_fornecedor($fornecedor){
-                $obj = new Fornecedor();
-                if($obj->consutarfornecedor($fornecedor)){
-                    session_start();
-                    $menu = $this->menu();
-                    $resultado = $obj->consutarfornecedor($fornecedor);
-                    include_once 'view/fornecedor.php';
-                }else{
-                    session_start();
-                    include_once 'view/fornecedor.php';
+                public function consultar_fornecedor($fornecedor){
+                    $obj = new Fornecedor();
+                    if($obj->consutarfornecedor($fornecedor)){
+                        session_start();
+                        $menu = $this->menu();
+                        $resultado = $obj->consutarfornecedor($fornecedor);
+                        include_once 'view/fornecedor.php';
+                    }else{
+                        session_start();
+                        include_once 'view/fornecedor.php';
+                    }
                 }
-            }
-            public function deletar_fornecedor($id){
-                $obj = new Fornecedor();
-                if($obj->excluirfornecedor($id)){
-                    session_start();
-                    $menu = $this->menu();
-                    include_once 'view/fornecedor.php';
-                }else{
-                    session_start();
-                    include_once 'view/fornecedor.php';
+                public function deletar_fornecedor($id){
+                    $obj = new Fornecedor();
+                    if($obj->excluirfornecedor($id)){
+                        session_start();
+                        $menu = $this->menu();
+                        include_once 'view/fornecedor.php';
+                    }else{
+                        session_start();
+                        include_once 'view/fornecedor.php';
+                    }
                 }
-            }
-            public function alterar_fornecedor($id,$fornecedor){
-                $obj = new Fornecedor();
-                if($obj->alterarfornecedor($id,$fornecedor)){
-                    session_start();
-                    $menu = $this->menu();
-                    include_once 'view/fornecedor.php';
-                }else{
-                    session_start();
-                    include_once 'view/fornecedor.php';
+                public function alterar_fornecedor($id,$fornecedor){
+                    $obj = new Fornecedor();
+                    if($obj->alterarfornecedor($id,$fornecedor)){
+                        session_start();
+                        $menu = $this->menu();
+                        include_once 'view/fornecedor.php';
+                    }else{
+                        session_start();
+                        include_once 'view/fornecedor.php';
+                    }
                 }
-            }
-        #endregion
+            #endregion
         #endregion
         #region Modal & Semelhantes
             public function menu(){
@@ -237,7 +237,7 @@
                 print '  <div class="modal-dialog">';
                 print '    <div class="modal-content">';
                 print '      <div class="modal-header">';
-                print '        <h1 class="modal-title fs-5" id="novoDistribuidora">Login</h1>';
+                print '        <h1 class="modal-title fs-5" id="novoDistribuidora">Nova Distribuidora</h1>';
                 print '        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
                 print '      </div>';
                 print '      <div class="modal-body">';
@@ -308,83 +308,100 @@
                 print '  </div>';
                 print '</div>';
             }
-        #endregion
-        public function inserir_fornecedor_modal(){
-            print '<div class="modal fade" id="novofornecedor" tabindex="-1" aria-labelledby="novofornecedor" aria-hidden="true">';
-            print '  <div class="modal-dialog">';
-            print '    <div class="modal-content">';
-            print '      <div class="modal-header">';
-            print '        <h1 class="modal-title fs-5" id="novofornecedor">Novo Fornecedor</h1>';
-            print '        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
-            print '      </div>';
-            print '      <div class="modal-body">';
-            print '      </div>';
-            print '<form  method="post" action="index.php">';
-            print '    <div class="container text-center">';
-            print '        <label class="form-label">fornecedor</label>';
-            print '        <input type="text" class="form-control" name="fornecedor" required>';
-            print '        <label class="form-label">cnpj</label>';
-            print '        <input type="number" class="form-control" name="cnpj" required>';
-            print '        <label class="form-label">email</label>';
-            print '        <input type="email" class="form-control" name="email" required>';
-            print '        <label class="form-label">Contato</label>';
-            print '        <input type="number" class="form-control" name="contato" required>';
-            print '        <div class="d-grid gap-2 col-6 mx-auto"><br>';
-            print '            <button type="submit" name="inserir_fornecedor" class="btn btn-success"> Inserir</button>';
-            print '        </div><br>';
-            print '    </div>';
-            print '</form>';
-            print '    </div>';
-            print '  </div>';
-            print '</div>';
-        }
-        public function alterar_fornecedor_modal($id_fornecedor,$nome_fornecedor){
-            print '<div class="modal fade" id="alterar_fornecedor'.$id_fornecedor.'" tabindex="-1" aria-labelledby="alterar_distribuidora'.$nome_fornecedor.'" aria-hidden="true">';
-            print '  <div class="modal-dialog">';
-            print '    <div class="modal-content">';
-            print '      <div class="modal-header">';
-            print '        <h1 class="modal-title fs-5" id="alterar_fornecedor'.$id_fornecedor.'">Alterar Distribuidora</h1>';
-            print '        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
-            print '      </div>';
-            print '      <div class="modal-body">';
-            print '<form method="post" action="index.php">';
-            print '  <div class="modal-body">';
-            print '     <input type="text" class="form-control" name="nome_fornecedor" value="' . $nome_fornecedor . '">';
-            print '  </div>';
-            print '  <div class="modal-footer">';
-            print '    <input type="hidden" name="id_fornecedor" value="' . $id_fornecedor . '">';
-            print '    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>';
-            print '    <button type="submit" name="alterar_fornecedor" class="btn btn-primary">Alterar</button>';
-            print '  </div>';
-            print '</form>';
-            print '      </div>';
-            print '    </div>';
-            print '  </div>';
-            print '</div>';
-        }
-        public function deletar_fornecedor_modal($id_fornecedor,$nome_fornecedor){
-            print '<div class="modal fade" id="excluir_fornecedor'.$id_fornecedor.'" tabindex="-1" aria-labelledby="excluir_fornecedor'.$id_fornecedor.'" aria-hidden="true">';
-            print '  <div class="modal-dialog">';
-            print '    <div class="modal-content">';
-            print '      <div class="modal-header">';
-            print '        <h1 class="modal-title fs-5" id="deletarFornecedor'.$id_fornecedor.'">Deletar Fornecedor</h1>';
-            print '        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
-            print '      </div>';
-            print '      <div class="modal-body">';
-            print '<h2>'.$nome_fornecedor.'</h2>';
-            print '      <br>Tem certeza que deseja excluir essa Fornecedora?<br>Essa ação não podera ser desfeita';
-            print '<form method="post" action="index.php">';
-            print ' <div class="modal-footer">';
-            print '    <input type="hidden" name="id" value="' . $id_fornecedor . '">';
-            print '    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>';
-            print '    <button type="submit" name="excluir_fornecedor" class="btn btn-danger">Excluir</button>';
-            print ' </div>';
-            print '</form>';
-            print '      </div>';
-            print '    </div>';
-            print '  </div>';
-            print '</div>';
-        }
+            public function inserir_fornecedor_modal(){
+                print '<div class="modal fade" id="novofornecedor" tabindex="-1" aria-labelledby="novofornecedor" aria-hidden="true">';
+                print '  <div class="modal-dialog">';
+                print '    <div class="modal-content">';
+                print '      <div class="modal-header">';
+                print '        <h1 class="modal-title fs-5" id="novofornecedor">Novo Fornecedor</h1>';
+                print '        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+                print '      </div>';
+                print '      <div class="modal-body">';
+                print '      </div>';
+                print '<form  method="post" action="index.php">';
+                print '    <div class="container text-center">';
+                print '        <label class="form-label">fornecedor</label>';
+                print '        <input type="text" class="form-control" name="fornecedor" required>';
+                print '        <label class="form-label">cnpj</label>';
+                print '        <input type="number" class="form-control" name="cnpj" required>';
+                print '        <label class="form-label">email</label>';
+                print '        <input type="email" class="form-control" name="email" required>';
+                print '        <label class="form-label">Contato</label>';
+                print '        <input type="number" class="form-control" name="contato" required>';
+                print '        <div class="d-grid gap-2 col-6 mx-auto"><br>';
+                print '            <button type="submit" name="inserir_fornecedor" class="btn btn-success"> Inserir</button>';
+                print '        </div><br>';
+                print '    </div>';
+                print '</form>';
+                print '    </div>';
+                print '  </div>';
+                print '</div>';
+            }
+            public function alterar_fornecedor_modal($id_fornecedor,$nome_fornecedor){
+                print '<div class="modal fade" id="alterar_fornecedor'.$id_fornecedor.'" tabindex="-1" aria-labelledby="alterar_distribuidora'.$nome_fornecedor.'" aria-hidden="true">';
+                print '  <div class="modal-dialog">';
+                print '    <div class="modal-content">';
+                print '      <div class="modal-header">';
+                print '        <h1 class="modal-title fs-5" id="alterar_fornecedor'.$id_fornecedor.'">Alterar Distribuidora</h1>';
+                print '        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+                print '      </div>';
+                print '      <div class="modal-body">';
+                print '<form method="post" action="index.php">';
+                print '  <div class="modal-body">';
+                print '     <input type="text" class="form-control" name="nome_fornecedor" value="' . $nome_fornecedor . '">';
+                print '  </div>';
+                print '  <div class="modal-footer">';
+                print '    <input type="hidden" name="id_fornecedor" value="' . $id_fornecedor . '">';
+                print '    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>';
+                print '    <button type="submit" name="alterar_fornecedor" class="btn btn-primary">Alterar</button>';
+                print '  </div>';
+                print '</form>';
+                print '      </div>';
+                print '    </div>';
+                print '  </div>';
+                print '</div>';
+            }
+            public function deletar_fornecedor_modal($id_fornecedor,$nome_fornecedor){
+                print '<div class="modal fade" id="excluir_fornecedor'.$id_fornecedor.'" tabindex="-1" aria-labelledby="excluir_fornecedor'.$id_fornecedor.'" aria-hidden="true">';
+                print '  <div class="modal-dialog">';
+                print '    <div class="modal-content">';
+                print '      <div class="modal-header">';
+                print '        <h1 class="modal-title fs-5" id="deletarFornecedor'.$id_fornecedor.'">Deletar Fornecedor</h1>';
+                print '        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+                print '      </div>';
+                print '      <div class="modal-body">';
+                print '<h2>'.$nome_fornecedor.'</h2>';
+                print '      <br>Tem certeza que deseja excluir essa Fornecedora?<br>Essa ação não podera ser desfeita';
+                print '<form method="post" action="index.php">';
+                print ' <div class="modal-footer">';
+                print '    <input type="hidden" name="id" value="' . $id_fornecedor . '">';
+                print '    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>';
+                print '    <button type="submit" name="excluir_fornecedor" class="btn btn-danger">Excluir</button>';
+                print ' </div>';
+                print '</form>';
+                print '      </div>';
+                print '    </div>';
+                print '  </div>';
+                print '</div>';
+            }
+            public function select_fornecedor(){
+                $obj = new Fornecedor();
+                $resultado = $obj->consutarfornecedor(null);
+                print'<select class="form-select" aria-label="Default select example" name="selectfornecedor[]">';
+                foreach($resultado as $key => $value){
+                    print '<option value="' . $value->id_fornecedor . '">' . $value->nome_fornecedor . '</option>';
+                }
+                print'</select>';
+            }
+            public function select_distribuidora(){
+                $obj = new Distribuidora();
+                $resultado = $obj->consutarDistribuidora(null);
+                print'<select class="form-select" aria-label="Default select example" name="selectdistribuidora[]">';
+                foreach($resultado as $key => $value){
+                    print '<option value="' . $value->id_distribuidora . '">' . $value->nome_distribuidora . '</option>';
+                }
+                print'</select>';
+            }
     #endregion
 
     }

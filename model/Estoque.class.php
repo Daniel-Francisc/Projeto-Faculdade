@@ -130,7 +130,7 @@
                 $query->bindValue(':v_total', $this->getVTotal(), PDO::PARAM_STR);
                 $query->bindValue(':n_lote', $this->getNLote(), PDO::PARAM_STR);
                 $query->bindValue(':dt_validade', $this->getDtValidade(), PDO::PARAM_STR);
-                $query->bindValue(':cor', $this->getCor(), PDO::PARAM_STR);
+                $query->bindValue(':cor', $this->getCor(), PDO::PARAM_INT);
                 $query->execute();
                 //print "Feito";
                     
