@@ -232,6 +232,37 @@
                         break;
                 }
             }
+            public function inserir_produto_modal(){
+                print '<div class="modal fade" id="novoproduto" tabindex="-1" aria-labelledby="novoproduto" aria-hidden="true">';
+                print '  <div class="modal-dialog">';
+                print '    <div class="modal-content">';
+                print '      <div class="modal-header">';
+                print '        <h1 class="modal-title fs-5" id="novoproduto">Novo Produto</h1>';
+                print '        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+                print '      </div>';
+                print '      <div class="modal-body">';
+                print '      </div>';
+                print '<form  method="post" action="index.php">';
+                print '    <div class="container text-center">';
+                print '        <label class="form-label">Produto</label>';
+                print '        <input type="text" class="form-control" name="distribuidora" required>';
+                print '        <label class="form-label">cnpj</label>';
+                print '        <input type="number" class="form-control" name="cnpj" required>';
+                print '        <label class="form-label">email</label>';
+                print '        <input type="email" class="form-control" name="email" required>';
+                print '        <label class="form-label">Contato</label>';
+                print '        <input type="number" class="form-control" name="contato" required>';
+                $this->select_distribuidora();
+                $this->select_fornecedor();
+                print '        <div class="d-grid gap-2 col-6 mx-auto"><br>';
+                print '            <button type="submit" name="inserir_distribuidora" class="btn btn-success"> Inserir</button>';
+                print '        </div><br>';
+                print '    </div>';
+                print '</form>';
+                print '    </div>';
+                print '  </div>';
+                print '</div>';
+            }
             public function inserir_distribuidora_modal(){
                 print '<div class="modal fade" id="novoDistribuidora" tabindex="-1" aria-labelledby="novoDistribuidora" aria-hidden="true">';
                 print '  <div class="modal-dialog">';

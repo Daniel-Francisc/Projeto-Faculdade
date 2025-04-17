@@ -16,7 +16,7 @@
                 <h3>Consultar Produtos</h3><br>
                 <input type="text" class=" col-8" id="exampleInputName1" placeholder="Busque por nome...">
                 <button class="btn btn-info col-sm-2"><i class="bi bi-search"></i> Consultar</button>
-                <button class="btn btn-success col-sm-2" type="button" name="novoDistribuidora" data-bs-toggle="modal" data-bs-target="#novoDistribuidora"><i class="bi bi-plus-lg"></i> Novo</button>
+                <button class="btn btn-success col-sm-2" type="button" name="novoproduto" data-bs-toggle="modal" data-bs-target="#novoproduto"><i class="bi bi-plus-lg"></i> Novo</button>
             </div>
         </form>
     </div>
