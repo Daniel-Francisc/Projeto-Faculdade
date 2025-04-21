@@ -73,13 +73,31 @@
             $produto = htmlspecialchars($_POST['produto']);
             $descricao = htmlspecialchars($_POST['descricao']);
             $entrada = htmlspecialchars($_POST['entrada']);
-            $id_distribuidora = htmlspecialchars($_POST['id_distribuidora']);
-            $id_fornecedor = htmlspecialchars($_POST['id_fornecedor']);
-            $v_uni = htmlspecialchars($_POST['v_uni']);
+            $qtd_produto = htmlspecialchars($_POST['qtd']);
+            $id_distribuidora = $_POST['selectdistribuidora'];
+            $id_fornecedor = $_POST['selectfornecedor'];
             $v_total = htmlspecialchars($_POST['v_total']);
+            $v_uni = $v_total/$qtd_produto;
             $n_lote = htmlspecialchars($_POST['n_lote']);
             $dt_validade = htmlspecialchars($_POST['dt_validade']);
-            $obj->inserir_produto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade,$cor);
+            $obj->inserir_produto($produto,$descricao,$entrada,$qtd_produto,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade);
+        }
+        if (isset($_POST['consultar_produto'])){
+            $obj = new controller;
+            $produto = htmlspecialchars($_POST['produto']);
+            $obj->consultar_produto($produto);
+        }
+
+        if (isset($_POST['excluir_produto'])){
+            $obj = new controller;
+            $id = htmlspecialchars($_POST['id']);
+            $obj->deletar_produto($id);
+        }
+        if (isset($_POST['alterar_produto'])){
+            $obj = new controller;
+            $id = htmlspecialchars($_POST['id_produto']);
+            $produto = htmlspecialchars($_POST['nome_produto']);
+            $obj->alterar_produto($id,$produto);
         }
     #endregion
     #region inserir distribuidora

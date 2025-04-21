@@ -14,8 +14,8 @@
         <form action="index.php" method="post">
             <div class="mb-3 row">
                 <h3>Consultar Produtos</h3><br>
-                <input type="text" class=" col-8" id="exampleInputName1" placeholder="Busque por nome...">
-                <button class="btn btn-info col-sm-2"><i class="bi bi-search"></i> Consultar</button>
+                <input type="text" name="produto" class=" col-8" id="exampleInputName1" placeholder="Busque por nome...">
+                <button class="btn btn-info col-sm-2" name="consultar_produto"><i class="bi bi-search"></i> Consultar</button>
                 <button class="btn btn-success col-sm-2" type="button" name="novoproduto" data-bs-toggle="modal" data-bs-target="#novoproduto"><i class="bi bi-plus-lg"></i> Novo</button>
             </div>
         </form>
@@ -23,22 +23,27 @@
     <table class="table container">
       <thead>
         <tr>
-          <th scope="col">N° lote</th>
           <th scope="col">Produto</th>
-          <th scope="col">Qtd. estoque</th>
-          <th scope="col">Valor uni.</th>
-          <th scope="col">Valor total</th>
-          <th scope="col">Ações</th>
+          <th scope="col">Nº Lote</th>
+          <th scope="col">Qtd. Em estoque</th>
+          <th scope="col">Valor Un.</th>
+          <th scope="col">Ação</th>
         </tr>
       </thead>
       <tbody>
         <?php
-            print'<tr>';
-            print'  <th scope="row">3</th>';
-            print'  <td>John</td>';
-            print'  <td>Doe</td>';
-            print'  <td>@social</td>';
-            print'</tr>';
+        foreach($resultado as $key=>$valor){
+                print'<tr>';
+                print'  <th>'.$valor->nome_produto.'</th>';
+                print'  <th>'.$valor->n_lote.'</th>';
+                print'  <th>'.$valor->qtd_produto.'</th>';
+                print'  <th> R$'.$valor->valor_uni.'</th>';
+                print ' <td>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#alterar_produto' . $valor->id_produto . '"><i class="bi bi-pencil-square"></i> Alterar</button>
+                        <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#excluir_produto' . $valor->id_produto . '"><i class="bi bi-x-square-fill"></i> Excluir</button>
+                        </td>';
+                print'</th>';
+        }
         ?>
       </tbody>
     </table>
@@ -46,4 +51,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-<?php $this->inserir_distribuidora_modal()?>
+<?php $this->inserir_produto_modal()?>
+<?php
+        //criar os Modal de excluir
+        foreach ($resultado as $key => $valor) {
+            $this->deletar_produto_modal($valor->id_produto, $valor->nome_produto);
+            $this->alterar_produto_modal($valor->id_produto, $valor->nome_produto);
+        }
+    ?>
