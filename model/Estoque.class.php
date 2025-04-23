@@ -5,6 +5,7 @@
             private $produto;
             private $descricao;
             private $entrada;
+            private $qtd_produto;
             private $id_distribuidora;
             private $id_fornecedor;
             private $v_uni;
@@ -46,6 +47,14 @@
             public function setEntrada($entrada)
             {
                         $this->entrada = $entrada;
+            }
+            public function getQtdProduto()
+            {
+                        return $this->qtd_produto;
+            }
+            public function setQtdProduto($qtd_produto)
+            {
+                        $this->qtd_produto = $qtd_produto;
             }
             public function getIdDistribuidora()
             {
@@ -95,28 +104,21 @@
             {
                         $this->dt_validade = $dt_validade;
             }
-            public function getCor()
-            {
-                        return $this->cor;
-            }
-            public function setCor($cor)
-            {
-                        $this->cor = $cor;
-            }
         #endregion
-        public function inserirProduto($produto, $descricao, $entrada, $id_distribuidora, $id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade,$cor){
+        public function inserirProduto($produto, $descricao, $entrada,$qtd_produto, $id_distribuidora, $id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade){
             $this->setProduto($produto);
             $this->setDescricao($descricao);
             $this->setEntrada($entrada);
+            $this->setQtdProduto($qtd_produto);
             $this->setIdDistribuidora($id_distribuidora);
             $this->setIdFornecedor($id_fornecedor);
             $this->setVUni($v_uni);
             $this->setVTotal($v_total);
             $this->setNLote($n_lote);
             $this->setDtValidade($dt_validade);
-            $this->setCor($cor);
+            //$this->setCor($cor);
 
-            $sql = "INSERT INTO tb_produto VALUES (null, :produto, :descricao, :entrada, :id_distribuidora, :id_fornecedor, :v_uni, :v_total, :n_lote, :dt_validade, :cor)";
+            $sql = "INSERT INTO tb_produto VALUES (null, :produto, :descricao, :entrada,:qtd, :id_distribuidora, :id_fornecedor, :v_uni, :v_total, :n_lote, :dt_validade)";
             
             try {
                 $db  = $this->conectarEstoque();
@@ -124,13 +126,14 @@
                 $query->bindValue(':produto',  $this->getProduto(), PDO::PARAM_STR);
                 $query->bindValue(':descricao', $this->getDescricao(), PDO::PARAM_STR);
                 $query->bindValue(':entrada', $this->getEntrada(), PDO::PARAM_STR);
+                $query->bindValue(':qtd', $this->getQtdProduto(), PDO::PARAM_INT);
                 $query->bindValue(':id_distribuidora', $this->getIdDistribuidora(), PDO::PARAM_INT);
                 $query->bindValue(':id_fornecedor', $this->getIdFornecedor(), PDO::PARAM_INT);
                 $query->bindValue(':v_uni', $this->getVUni(), PDO::PARAM_STR);
                 $query->bindValue(':v_total', $this->getVTotal(), PDO::PARAM_STR);
                 $query->bindValue(':n_lote', $this->getNLote(), PDO::PARAM_STR);
                 $query->bindValue(':dt_validade', $this->getDtValidade(), PDO::PARAM_STR);
-                $query->bindValue(':cor', $this->getCor(), PDO::PARAM_INT);
+                //$query->bindValue(':cor', $this->getCor(), PDO::PARAM_INT);
                 $query->execute();
                 //print "Feito";
                     
@@ -145,7 +148,7 @@
     #region Consultar    
             public function consutarEstoque($produto){
                     $this->setproduto($produto);
-                    $sql = "SELECT * FROM tb_estoque where true ";
+                    $sql = "SELECT * FROM tb_produto where true ";
 
                     if ($this->getproduto() != null) {
                         $sql .= " and nome_produto like :produto";
@@ -179,7 +182,7 @@
                     $this->setId($id);
                     $this->setProduto($produto);
 
-                    $sql = "UPDATE tb_estoque SET nome_produto = :produto WHERE id_produto = :id";
+                    $sql = "UPDATE tb_produto SET nome_produto = :produto WHERE id_produto = :id";
 
                     try {
                             $bd = $this->conectarEstoque();
@@ -187,7 +190,7 @@
                             $query->bindValue(':id', $this->getId(), PDO::PARAM_INT);
                             $query->bindValue(':produto', $this->getProduto(), PDO::PARAM_STR);
                             $query->execute();
-                            print "Feito";
+                            //print "Feito";
                             return true;
 
                     } catch (PDOException $e) {
@@ -201,14 +204,14 @@
             public function excluirEstoque($id){
                 $this->setId($id);
             
-                $sql = "DELETE FROM tb_estoque WHERE id_produto = :id";
+                $sql = "DELETE FROM tb_produto WHERE id_produto = :id";
             
                 try {
                     $bd = $this->conectarEstoque();
                     $query = $bd->prepare($sql);
                     $query->bindValue(':id', $this->getId(), PDO::PARAM_INT);
                     $query->execute();
-                    print "Feito";
+                    //print "Feito";
 
                     return true;
             

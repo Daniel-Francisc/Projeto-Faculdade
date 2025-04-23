@@ -44,6 +44,7 @@
                         include_once 'Principal.php';
                     } else {
                         session_start();
+                        $menu = $this->menu();
                         include_once 'Principal.php';
                         }
                 }
@@ -60,6 +61,7 @@
                         include_once 'view/distribuidora.php';
                     }else{
                         session_start();
+                        $menu = $this->menu();
                         include_once 'view/distribuidora.php';
                     }
                 }
@@ -72,6 +74,7 @@
                         include_once 'view/distribuidora.php';
                     }else{
                         session_start();
+                        $menu = $this->menu();
                         include_once 'view/distribuidora.php';
                     }
                 }
@@ -83,6 +86,7 @@
                         include_once 'view/distribuidora.php';
                     }else{
                         session_start();
+                        $menu = $this->menu();
                         include_once 'view/distribuidora.php';
                     }
                 }
@@ -94,20 +98,59 @@
                         include_once 'view/distribuidora.php';
                     }else{
                         session_start();
+                        $menu = $this->menu();
                         include_once 'view/distribuidora.php';
                     }
                 }
             #endregion
             #region Produtos SCUD
-                public function inserir_produto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade,$cor){
+                public function inserir_produto($produto,$descricao,$entrada,$qtd_produto,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade){
                     $obj = new Estoque();
-                    if ($obj->inserirProduto($produto,$descricao,$entrada,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade,$cor)==true){
+                    if ($obj->inserirProduto($produto,$descricao,$entrada,$qtd_produto,$id_distribuidora,$id_fornecedor,$v_uni,$v_total,$n_lote,$dt_validade)==true){
                         session_start();
                         $menu = $this->menu();
-                        include_once 'produtos.php';
+                        include_once 'view/produtos.php';
                     } else{
                         session_start();
-                        include_once 'produtos.php';
+                        $menu = $this->menu();
+                        include_once 'view/produtos.php';
+                    }
+                }
+                public function consultar_produto($produto){
+                    $obj = new Estoque();
+                    if($obj->consutarEstoque($produto)){
+                        session_start();
+                        $menu = $this->menu();
+                        $resultado = $obj->consutarEstoque($produto);
+                        include_once 'view/produtos.php';
+                    }else{
+                        session_start();
+                        $menu = $this->menu();
+                        include_once 'view/produtos.php';
+                    }
+                }
+                public function deletar_produto($id){
+                    $obj = new Estoque();
+                    if($obj->excluirEstoque($id)){
+                        session_start();
+                        $menu = $this->menu();
+                        include_once 'view/produtos.php';
+                    }else{
+                        session_start();
+                        $menu = $this->menu();
+                        include_once 'view/produtos.php';
+                    }
+                }
+                public function alterar_produto($id,$produto){
+                    $obj = new Estoque();
+                    if($obj->alterarEstoque($id,$produto)){
+                        session_start();
+                        $menu = $this->menu();
+                        include_once 'view/produtos.php';
+                    }else{
+                        session_start();
+                        $menu = $this->menu();
+                        include_once 'view/produtos.php';
                     }
                 }
             #endregion
@@ -120,6 +163,7 @@
                         include_once 'view/fornecedor.php';
                     }else{
                         session_start();
+                        $menu = $this->menu();
                         include_once 'view/fornecedor.php';
                     }
                 }
@@ -132,6 +176,7 @@
                         include_once 'view/fornecedor.php';
                     }else{
                         session_start();
+                        $menu = $this->menu();
                         include_once 'view/fornecedor.php';
                     }
                 }
@@ -143,6 +188,7 @@
                         include_once 'view/fornecedor.php';
                     }else{
                         session_start();
+                        $menu = $this->menu();
                         include_once 'view/fornecedor.php';
                     }
                 }
@@ -154,6 +200,7 @@
                         include_once 'view/fornecedor.php';
                     }else{
                         session_start();
+                        $menu = $this->menu();
                         include_once 'view/fornecedor.php';
                     }
                 }
@@ -234,7 +281,7 @@
             }
             public function inserir_produto_modal(){
                 print '<div class="modal fade" id="novoproduto" tabindex="-1" aria-labelledby="novoproduto" aria-hidden="true">';
-                print '  <div class="modal-dialog">';
+                print '  <div class="modal-dialog modal-lg">';
                 print '    <div class="modal-content">';
                 print '      <div class="modal-header">';
                 print '        <h1 class="modal-title fs-5" id="novoproduto">Novo Produto</h1>';
@@ -243,22 +290,79 @@
                 print '      <div class="modal-body">';
                 print '      </div>';
                 print '<form  method="post" action="index.php">';
-                print '    <div class="container text-center">';
+                print '    <div class="container">';
                 print '        <label class="form-label">Produto</label>';
-                print '        <input type="text" class="form-control" name="distribuidora" required>';
-                print '        <label class="form-label">cnpj</label>';
-                print '        <input type="number" class="form-control" name="cnpj" required>';
-                print '        <label class="form-label">email</label>';
-                print '        <input type="email" class="form-control" name="email" required>';
-                print '        <label class="form-label">Contato</label>';
-                print '        <input type="number" class="form-control" name="contato" required>';
+                print '        <input type="text" class="form-control" name="produto" required>';
+                print '        <div class="mb-3">';
+                print '            <label for="exampleFormControlTextarea1" class="form-label">Descrição</label>';
+                print '            <textarea class="form-control" id="exampleFormControlTextarea1" name="descricao" rows="3"></textarea>';
+                print '        </div>';
+                print '        <label class="form-label">Horario de Entrada</label>';
+                print '        <input type="time" class="form-control" name="entrada" required>';
+                print '        <label class="form-label">Qtd. Produto</label>';
+                print '        <input type="number" class="form-control" name="qtd" required>';
+                print '        <label class="form-label">Distribuidora</label>';
                 $this->select_distribuidora();
+                print '        <label class="form-label">Fornecedor</label>';
                 $this->select_fornecedor();
+                print '        <label class="form-label">Valor Total.</label>';
+                print '        <input type="number" class="form-control" name="v_total" required>';
+                print '        <label class="form-label">Nº Lote</label>';
+                print '        <input type="number" class="form-control" name="n_lote" required>';
+                print '        <label class="form-label">Data de validade</label>';
+                print '        <input type="date" class="form-control" name="dt_validade" required>';
                 print '        <div class="d-grid gap-2 col-6 mx-auto"><br>';
-                print '            <button type="submit" name="inserir_distribuidora" class="btn btn-success"> Inserir</button>';
+                print '            <button type="submit" name="inserir_produto" class="btn btn-success"> Inserir</button>';
                 print '        </div><br>';
                 print '    </div>';
                 print '</form>';
+                print '    </div>';
+                print '  </div>';
+                print '</div>';
+            }
+            public function alterar_produto_modal($id_produto,$nome_produto){
+                print '<div class="modal fade" id="alterar_produto'.$id_produto.'" tabindex="-1" aria-labelledby="alterar_produto'.$nome_produto.'" aria-hidden="true">';
+                print '  <div class="modal-dialog">';
+                print '    <div class="modal-content">';
+                print '      <div class="modal-header">';
+                print '        <h1 class="modal-title fs-5" id="alterar_produto'.$id_produto.'">Alterar Produto</h1>';
+                print '        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+                print '      </div>';
+                print '      <div class="modal-body">';
+                print '<form method="post" action="index.php">';
+                print '  <div class="modal-body">';
+                print '     <input type="text" class="form-control" name="nome_produto" value="' . $nome_produto . '">';
+                print '  </div>';
+                print '  <div class="modal-footer">';
+                print '    <input type="hidden" name="id_produto" value="' . $id_produto . '">';
+                print '    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>';
+                print '    <button type="submit" name="alterar_produto" class="btn btn-primary">Alterar</button>';
+                print '  </div>';
+                print '</form>';
+                print '      </div>';
+                print '    </div>';
+                print '  </div>';
+                print '</div>';
+            }
+            public function deletar_produto_modal($id_produto,$nome_produto){
+                print '<div class="modal fade" id="excluir_produto'.$id_produto.'" tabindex="-1" aria-labelledby="excluir_produto'.$id_produto.'" aria-hidden="true">';
+                print '  <div class="modal-dialog">';
+                print '    <div class="modal-content">';
+                print '      <div class="modal-header">';
+                print '        <h1 class="modal-title fs-5" id="deletarFornecedor'.$id_produto.'">Deletar Produto</h1>';
+                print '        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+                print '      </div>';
+                print '      <div class="modal-body">';
+                print '<h2>'.$nome_produto.'</h2>';
+                print '      <br>Tem certeza que deseja excluir esse Poduto?<br>Essa ação não podera ser desfeita';
+                print '<form method="post" action="index.php">';
+                print ' <div class="modal-footer">';
+                print '    <input type="hidden" name="id" value="' . $id_produto . '">';
+                print '    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>';
+                print '    <button type="submit" name="excluir_produto" class="btn btn-danger">Excluir</button>';
+                print ' </div>';
+                print '</form>';
+                print '      </div>';
                 print '    </div>';
                 print '  </div>';
                 print '</div>';
@@ -418,7 +522,7 @@
             public function select_fornecedor(){
                 $obj = new Fornecedor();
                 $resultado = $obj->consutarfornecedor(null);
-                print'<select class="form-select" aria-label="Default select example" name="selectfornecedor[]">';
+                print'<select class="form-select col-6" aria-label="Default select example" name="selectfornecedor[]">';
                 foreach($resultado as $key => $value){
                     print '<option value="' . $value->id_fornecedor . '">' . $value->nome_fornecedor . '</option>';
                 }
@@ -427,7 +531,7 @@
             public function select_distribuidora(){
                 $obj = new Distribuidora();
                 $resultado = $obj->consutarDistribuidora(null);
-                print'<select class="form-select" aria-label="Default select example" name="selectdistribuidora[]">';
+                print'<select class="form-select col-6" aria-label="Default select example" name="selectdistribuidora[]">';
                 foreach($resultado as $key => $value){
                     print '<option value="' . $value->id_distribuidora . '">' . $value->nome_distribuidora . '</option>';
                 }

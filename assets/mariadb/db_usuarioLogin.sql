@@ -1,4 +1,4 @@
-#create database db_usuarioLogin;
+create database db_usuarioLogin;
 use db_usuarioLogin;
 
 create table if not exists tb_cargos (
@@ -15,3 +15,6 @@ ultimo_acesso datetime,
 id_cargo int not null,
 foreign key (id_cargo) references tb_cargos(id_cargo)
 );
+
+insert into tb_cargos values (null,'Administrador'),(null,'Gerente');
+insert into tb_usuario values (null,'Rogerinho','rogerinho@admin.com',md5(123456)null,1);
