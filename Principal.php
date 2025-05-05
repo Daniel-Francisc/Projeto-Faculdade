@@ -61,7 +61,7 @@
                                 <li><a class="dropdown-item" href="#">Luvas Anti quimicos</a></li>
                                 <li><a class="dropdown-item" href="#">Macacões Anti quimicos</a></li>
                                 <li><a class="dropdown-item" href="#">Botas Anti quimicos</a></li>
-                                <li><a class="dropdown-item" href="#">òculos Anti quimicos</a></li>
+                                <li><a class="dropdown-item" href="#">Óculos Anti quimicos</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -94,11 +94,11 @@
     </div>
 
     <main>
-        <div class="container text-center">
+        <div class="container text-center"><br>
             <h4 class="justify-content-start">Novidades</h4>
         </div>
-        <div class="container-sm px-4 row text-center">
-            <div class="p-3 col gx-5">
+        <div class="container-flex px-4 row text-center">
+            <div class="p-2 col gx-5">
                 <div class="card" style="width: 18rem;">
                     <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -108,7 +108,7 @@
                     </div>
                 </div>
             </div>
-            <div class="p-3 col gx-5">
+            <div class="p-2 col gx-5">
                 <div class="card" style="width: 18rem;">
                     <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -118,7 +118,64 @@
                     </div>
                 </div>
             </div>
-            <div class="p-3 col gx-5">
+            <div class="p-2 col gx-5">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">R$ 34,99</h5>
+                        <p class="card-text">Capacete Amarelo Para Construção Civil.</p>
+                        <a href="#" class="btn stretched-link">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2 col gx-5">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">R$ 34,99</h5>
+                        <p class="card-text">Capacete Amarelo Para Construção Civil.</p>
+                        <a href="#" class="btn stretched-link">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container text-center"><br>
+            <h4 class="justify-content-start">Novidades</h4>
+        </div>
+        
+        <div class="container-flex px-4 row text-center">
+            <div class="p-2 col gx-5">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">R$ 34,99</h5>
+                        <p class="card-text">Capacete Amarelo Para Construção Civil.</p>
+                        <a href="#" class="btn stretched-link">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2 col gx-5">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">R$ 34,99</h5>
+                        <p class="card-text">Capacete Amarelo Para Construção Civil.</p>
+                        <a href="#" class="btn stretched-link">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2 col gx-5">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">R$ 34,99</h5>
+                        <p class="card-text">Capacete Amarelo Para Construção Civil.</p>
+                        <a href="#" class="btn stretched-link">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2 col gx-5">
                 <div class="card" style="width: 18rem;">
                     <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
