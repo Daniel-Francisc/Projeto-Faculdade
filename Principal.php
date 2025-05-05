@@ -6,44 +6,138 @@
         <title>Principal - vendas</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     </head>
     <body>
-        <div class="bg-warning">
-            <nav class="navbar">
-                <div class="container-fluid navbar-brand">
-                    <div class="nav justify-content-center">
-                        EPI
-                    </div>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-dark" type="submit" name="entrarUsuario" data-bs-toggle="modal" data-bs-target="#entrarUsuario"><i class="bi bi-box-arrow-right"></i> Entrar</button>
-                    </div>
-                </div>
-            </nav>
-                <div class="row">
-                    <button class="text-bg-dark p-2 col-3">Dark with contrasting color</button>
-                    <button class="text-bg-warning p-2 col-3">Warning with contrasting color</button>
-                    <button class="text-bg-dark p-2 col-3">Dark with contrasting color</button>
-                    <button class="text-bg-warning p-2 col-3">Warning with contrasting color</button>
-                </div>
+    <nav class="navbar bg-warning">
+        <div class="container-fluid">
+            <a class="navbar-brand align-items-center" href="Principal.php">EPI's do Abelardo</a>
+            <div class="d-flex" role="search">
+                <button class="btn btn-dark" type="submit" name="entrarUsuario" data-bs-toggle="modal" data-bs-target="#entrarUsuario"><i class="bi bi-box-arrow-right"></i> Entrar</button>
+            </div>
         </div>
-        <br>
-        <br>
-        <div class="container">
-            <div class="card" style="width: 18rem;">
-                <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+    </nav>
+    <div>
+        <nav class="navbar navbar-expand-lg bg-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 container text-center">
+                        <li class="nav-item dropdown col">
+                            <a class="nav-link dropdown-toggle text-bg-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Construção Civil & Elétrica</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Capacetes</a></li>
+                                <li><a class="dropdown-item" href="#">Botas de Proteção</a></li>
+                                <li><a class="dropdown-item" href="#">Luvas P/ Construção</a></li>
+                                <li><a class="dropdown-item" href="#">Óculos de proteção</a></li>                                
+                                <li><a class="dropdown-item" href="#">Macacão & Colete P/ Construção</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown col">
+                            <a class="nav-link dropdown-toggle text-bg-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cozinha</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Touca de Cozinha</a></li>
+                                <li><a class="dropdown-item" href="#">Avental EPI</a></li>
+                                <li><a class="dropdown-item" href="#">Galochas</a></li>
+                                <li><a class="dropdown-item" href="#">Luvas P/ Cozinha</a></li>
+                                <li><a class="dropdown-item" href="#">Protetores Auriculares</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown col">
+                            <a class="nav-link dropdown-toggle text-bg-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Prot. Contra Fogo</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Macacão Contra Incêndio</a></li>
+                                <li><a class="dropdown-item" href="#">Capacete contra Incêndio</a></li>
+                                <li><a class="dropdown-item" href="#">Bota contra Incêndio</a></li>
+                                <li><a class="dropdown-item" href="#">Magueiras contra Incêndio</a></li>
+                                <li><a class="dropdown-item" href="#">Extintor de Incêndio</a></li>
+                            </ul>
+                        </li><li class="nav-item dropdown col">
+                            <a class="nav-link dropdown-toggle text-bg-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Prot. Contra Quimicos</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Máscaras</a></li>
+                                <li><a class="dropdown-item" href="#">Luvas Anti quimicos</a></li>
+                                <li><a class="dropdown-item" href="#">Macacões Anti quimicos</a></li>
+                                <li><a class="dropdown-item" href="#">Botas Anti quimicos</a></li>
+                                <li><a class="dropdown-item" href="#">òculos Anti quimicos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="">
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/img/jovem-engenheiro-trabalhando-na-fabrica.jpg" class="d-block w-100" style="width: 400px; height: 400px;" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/pessoas-em-equipamentos-de-seguranca-no-trabalho.jpg" class="d-block w-100" style="width: 400px; height: 400px;" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/retrato-de-mulher-trabalhando-em-uma-oficina-mecanica.jpg" class="d-block w-100" style="width: 400px; height: 400px;" alt="...">
+                </div>
+            </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+        </div>
+    </div>
+
+    <main>
+        <div class="container text-center">
+            <h4 class="justify-content-start">Novidades</h4>
+        </div>
+        <div class="container-sm px-4 row text-center">
+            <div class="p-3 col gx-5">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">R$ 34,99</h5>
+                        <p class="card-text">Capacete Amarelo Para Construção Civil.</p>
+                        <a href="#" class="btn stretched-link">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 col gx-5">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">R$ 34,99</h5>
+                        <p class="card-text">Capacete Amarelo Para Construção Civil.</p>
+                        <a href="#" class="btn stretched-link">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 col gx-5">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/img-capacete.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">R$ 34,99</h5>
+                        <p class="card-text">Capacete Amarelo Para Construção Civil.</p>
+                        <a href="#" class="btn stretched-link">Comprar Agora</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <?php entrarUsuario(); ?>
+    </main>
+    <?php entrarUsuario(); ?>
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
+
+
 
 <?php
     function entrarUsuario(){    
