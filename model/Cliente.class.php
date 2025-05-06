@@ -264,3 +264,8 @@ class Cliente extends ConexaoCliente{
         #endregion
     #endregion
 }
+
+
+$obj = new Cliente;
+//$obj->inserirCliente('Guess 2','guess@email.com','1234856','2003-05-20',1);
+$obj->alterarCliente(1,'Guess area 3');
