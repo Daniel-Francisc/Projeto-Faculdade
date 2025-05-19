@@ -28,5 +28,7 @@ id_fornecedor int not null,
 valor_uni float not null,
 valor_total float not null,
 n_lote int not null,
-dt_validade date
+dt_validade date,
+foreign key (id_fornecedor) references tb_fornecedor(id_fornecedor),
+foreign key (id_distribuidora) references tb_distribuidora(id_distribuidora)
 )

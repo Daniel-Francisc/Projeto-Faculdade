@@ -139,7 +139,6 @@
                 </div>
             </div>
         </div>
-        
         <div class="container text-center"><br>
             <h4 class="justify-content-start">Novidades</h4>
         </div>
