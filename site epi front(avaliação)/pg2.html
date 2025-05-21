@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .password-container {
+        position: relative;
+      }
+      .password-toggle {
+        position: absolute;
+        top: 1px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main
+      class="flex flex-col justify-center items-center mx-auto max-w-none h-screen bg-white max-md:max-w-[991px] max-sm:max-w-screen-sm"
+    >
+      <header class="mb-12">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f7e4eb875a1116e2fc29eef23a14bf2fec8d3f73?placeholderIfAbsent=true" alt="EPI" class="h-[87px] w-[343px]" />
+      </header>
+
+      <section class="flex flex-col items-center">
+        <div class="mb-8">
+          <label class="block mb-2.5 text-3xl font-bold text-stone-900">
+            EMAIL:
+          </label>
+          <div
+            class="relative h-[42px] w-[784px] max-md:w-[600px] max-sm:w-[300px]"
+          >
+            <input
+              type="text"
+              placeholder="digite o seu email:"
+              class="px-2.5 py-0 text-3xl font-medium bg-transparent border-[none] size-full text-zinc-400"
+            />
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <label class="block mb-2.5 text-3xl font-bold text-stone-900">
+            SENHA:
+          </label>
+          <div
+            class="password-container relative h-[42px] w-[784px] max-md:w-[600px] max-sm:w-[300px]"
+          >
+            <input
+              id="password"
+              type="password"
+              placeholder="digite o sua senha:"
+              class="px-2.5 py-0 text-3xl font-medium bg-transparent border-[none] size-full text-zinc-400"
+            />
+            <button
+              type="button"
+              id="togglePassword"
+              class="password-toggle absolute top-px right-2.5 w-10 h-10"
+              aria-label="Show password"
+            >
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2fef0574200dd09f9a5238b5d69f1ea26815c646?placeholderIfAbsent=true" alt="eye icon" class="w-10 h-10" />
+            </button>
+          </div>
+        </div>
+
+        <button
+          class="text-3xl font-bold text-white bg-amber-500 cursor-pointer border-[none] h-[65px] w-[343px] max-md:w-[300px] max-sm:w-[250px]"
+          onclick="handleLogin()"
+        >
+          ENTRAR
+        </button>
+      </section>
+    </main>
+
+    <script>
+      // Password visibility toggle functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleButton = document.getElementById("togglePassword");
+        const passwordInput = document.getElementById("password");
+
+        toggleButton.addEventListener("click", function () {
+          // Toggle the password visibility
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleButton.setAttribute("aria-label", "Hide password");
+          } else {
+            passwordInput.type = "password";
+            toggleButton.setAttribute("aria-label", "Show password");
+          }
+        });
+      });
+
+      // Login button click handler
+      function handleLogin() {
+        // Handle login logic here
+        console.log("Login button clicked");
+      }
+    </script>
+  </body>
+</html>

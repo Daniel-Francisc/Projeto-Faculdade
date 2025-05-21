@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loja EPI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .top-bar {
+      background-color: #f58220;
+      padding: 10px 20px;
+    }
+    .brand {
+      font-size: 32px;
+      font-weight: bold;
+    }
+    .icon-btn {
+      font-size: 20px;
+      color: #000;
+      cursor: pointer;
+    }
+    .category-bar {
+      background-color: #fff;
+      padding: 10px 15px;
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+      .fa-bars {
+      font-size: 25px;
+    }
+    .fa-shopping-cart {
+      font-size: 25px;
+    }
+    .fa-solid {
+      font-size: 25px;
+    }
+    .categoria-btn {
+      display: inline-block;
+      color: black;
+      background-color: #f58220;
+      font-weight: bold;
+      padding: 6px 30px;
+      margin-right: 6px;
+      font-size: 19px;
+      clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+      cursor: pointer;
+    }
+    .categoria-btn.dark {
+      color: white;
+      background-color: #1a1a1a;
+    }
+    .search-box {
+      padding: 5px;
+      font-size: 14px;
+      border: 1px solid #aaa;
+      border-radius: 3px;
+    }
+    .carousel-item{
+      width: 100%;
+      cursor: pointer;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    .product-img {
+      background: #eee;
+      width: 100%;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .buy-btn {
+      background-color: #f58220;
+      border: none;
+      padding: 5px 15px;
+      color: white;
+      font-weight: bold;
+    }
+    footer {
+      background-color: #f58220;
+      text-align: center;
+      padding: 15px;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+ <!-- header -->
+  <div class="top-bar d-flex justify-content-between align-items-center">
+    <i class="fas fa-bars icon-btn"></i>
+    <div class="brand">EPI do Abelardo</div>
+    <div>
+      <i class="fas fa-shopping-cart icon-btn me-3"></i>
+      <a href="pg2.html"><button class="btn btn-dark btn-sm">entrar</button></a>
+    </div>
+  </div>
+  <!-- categorias -->
+  <div class="category-bar d-flex align-items-center">
+    <span class="categoria-btn">Categoria 1</span>
+    <span class="categoria-btn dark">Categoria 2</span>
+    <span class="categoria-btn">Categoria 3</span>
+    <span class="categoria-btn dark">Categoria 4</span>
+    <span class="categoria-btn">Categoria 5</span>
+    <span class="categoria-btn dark">Categoria 6</span>
+    <input type="text" class="ms-auto search-box" placeholder="🔍">
+  </div>
+  <!-- banner (ajustar tamanho) -->
+  <div class="container mt-3">
+    <div id="carouselExample" class="carousel slide mb-4">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="epi construção.webp" class="d-block w-100" alt="Banner">
+        </div>
+      </div>
+    </div>
+
+    <h5>EPI para construção</h5>
+
+    <div class="d-flex justify-content-end gap-2 mb-3">
+      <select class="form-select form-select-sm w-auto">
+        <option>Relevância</option>
+      </select>
+      <select class="form-select form-select-sm w-auto">
+        <option>Preço</option>
+      </select>
+      <select class="form-select form-select-sm w-auto">
+        <option>Filtros</option>
+      </select>
+    </div>
+    <!-- produtos -->
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product-card">
+          <div class="product-img">IMAGEM</div>
+          <strong>NOME DO PRODUTO</strong>
+          <p>R$preço</p>
+          <button class="buy-btn">COMPRAR <i class="fas fa-shopping-cart"></i></button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <a href="pg3.html">
+        <div class="product-card">
+          <img src="capacete-api-2.webp" class="img-fluid mb-2">
+          <strong>Capacete Segurança Genesis com Suspensão...</strong>
+          <p>R$16,97</p>
+          <button class="buy-btn">COMPRAR <i class="fas fa-shopping-cart"></i></button></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="abafador EPI.webp" class="img-fluid mb-2">
+          <strong>Protetor Auditivo Abafador MSA...</strong>
+          <p>R$222,47</p>
+          <button class="buy-btn">COMPRAR <i class="fas fa-shopping-cart"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center my-5">
+      <h3>Veja mais</h3>
+      <i class="fas fa-angle-down fa-2x"></i>
+    </div>
+  </div>
+
+  <footer>
+    local de informações de contato
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
