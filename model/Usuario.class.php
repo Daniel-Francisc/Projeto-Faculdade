@@ -1,12 +1,12 @@
 <?php
-    class Usuario extends ConexaoUsuario{
+    class Usuario extends ConexaoClients{
         #region Atributo
-            private $id;            
-            private $nome;            
-            private $email;            
-            private $senha;            
-            private $acesso;            
-            private $cargo;            
+            private $id;
+            private $nome;
+            private $email;
+            private $senha;
+            private $acesso;
+            private $cargo;
         #endregion
 
         #region objetos
