@@ -1,74 +1,15 @@
 <?php
-    class Usuario extends ConexaoUsuario{
+    class Cliente extends ConexaoClients{
         #region Atributo
-            private $id;            
-            private $nome;            
-            private $email;            
-            private $senha;            
-            private $acesso;            
-            private $cargo;            
+            private $id;
+            private $nome;
+            private $email;
+            private $senha;
+            private $id_privilegio;
         #endregion
 
         #region objetos
-            public function getId()
-            {
-                    return $this->id;
-            }
 
-            public function setId($id)
-            {
-                    $this->id = $id;
-            }
-
-            public function getNome()
-            {
-                    return $this->nome;
-            }
-
-            public function setNome($nome)
-            {
-                    $this->nome = $nome;
-            }
-
-            public function getEmail()
-            {
-                    return $this->email;
-            }
-
-            public function setEmail($email)
-            {
-                    $this->email = $email;
-            }
-
-            public function getSenha()
-            {
-                    return $this->senha;
-            }
-
-            public function setSenha($senha)
-            {
-                    $this->senha = $senha;
-            }
-
-            public function getAcesso()
-            {
-                    return $this->acesso;
-            }
-
-            public function setAcesso($acesso)
-            {
-                    $this->acesso = $acesso;
-            }
-
-            public function getCargo()
-            {
-                    return $this->cargo;
-            }
-
-            public function setCargo($cargo)
-            {
-                    $this->cargo = $cargo;
-            }
         #endregion
 
         #region Login 
